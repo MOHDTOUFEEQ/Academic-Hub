@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   LayoutDashboard,
@@ -11,6 +12,9 @@ import {
   Bell,
   Search,
   User,
+  HelpCircle,
+  Menu,
+  X,
 } from "lucide-react";
 
 const navItems = [
@@ -22,27 +26,40 @@ const navItems = [
   { label: "Opportunities", icon: Briefcase, path: "/opportunities" },
   { label: "AI Suggestions", icon: Sparkles, path: "/ai-suggestions" },
   { label: "Settings", icon: Settings, path: "/settings" },
+  { label: "Help", icon: HelpCircle, path: "/help" },
 ];
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="flex min-h-screen">
+      {/* Mobile overlay */}
+      {sidebarOpen && (
+        <div className="fixed inset-0 bg-black/40 z-40 md:hidden" onClick={() => setSidebarOpen(false)} />
+      )}
+
       {/* Sidebar */}
-      <aside className="w-60 shrink-0 bg-sidebar text-sidebar-foreground flex flex-col">
-        <div className="px-5 py-5 border-b border-sidebar-border">
+      <aside className={`fixed md:sticky top-0 left-0 z-50 md:z-auto w-60 shrink-0 h-screen bg-sidebar text-sidebar-foreground flex flex-col transition-transform duration-200 ${
+        sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+      }`}>
+        <div className="px-5 py-5 border-b border-sidebar-border flex items-center justify-between">
           <h1 className="text-lg font-bold tracking-tight text-sidebar-primary-foreground">
             Smart Academic<br />Dashboard
           </h1>
+          <button className="md:hidden text-sidebar-foreground p-1" onClick={() => setSidebarOpen(false)}>
+            <X size={20} />
+          </button>
         </div>
-        <nav className="flex-1 py-4 space-y-1 px-3">
+        <nav className="flex-1 py-4 space-y-1 px-3 overflow-y-auto">
           {navItems.map((item) => {
             const active = location.pathname === item.path;
             return (
               <Link
                 key={item.path}
                 to={item.path}
+                onClick={() => setSidebarOpen(false)}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${
                   active
                     ? "bg-sidebar-accent text-sidebar-accent-foreground"
@@ -61,25 +78,30 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       </aside>
 
       {/* Main area */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col min-w-0">
         {/* Header */}
-        <header className="h-16 bg-card border-b flex items-center justify-between px-6">
-          <div className="relative w-80">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-            <input
-              type="text"
-              placeholder="Search courses, deadlines, announcements…"
-              className="w-full pl-9 pr-4 py-2 rounded-lg bg-muted text-sm text-foreground placeholder:text-muted-foreground border-0 outline-none focus:ring-2 focus:ring-ring"
-            />
+        <header className="h-14 md:h-16 bg-card border-b flex items-center justify-between px-4 md:px-6 sticky top-0 z-30">
+          <div className="flex items-center gap-3 flex-1">
+            <button className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors" onClick={() => setSidebarOpen(true)}>
+              <Menu size={20} className="text-foreground" />
+            </button>
+            <div className="relative w-full max-w-xs sm:max-w-sm md:w-80">
+              <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="Search…"
+                className="w-full pl-9 pr-4 py-2 rounded-lg bg-muted text-sm text-foreground placeholder:text-muted-foreground border-0 outline-none focus:ring-2 focus:ring-ring"
+              />
+            </div>
           </div>
-          <div className="flex items-center gap-4">
-            <button className="relative p-2 rounded-lg hover:bg-muted transition-colors">
+          <div className="flex items-center gap-2 md:gap-4">
+            <Link to="/notifications" className="relative p-2 rounded-lg hover:bg-muted transition-colors">
               <Bell size={20} className="text-foreground" />
               <span className="absolute top-1 right-1 w-4 h-4 rounded-full bg-destructive text-destructive-foreground text-[10px] font-bold flex items-center justify-center">
                 3
               </span>
-            </button>
-            <Link to="/settings" className="p-2 rounded-lg hover:bg-muted transition-colors">
+            </Link>
+            <Link to="/settings" className="p-2 rounded-lg hover:bg-muted transition-colors hidden sm:block">
               <Settings size={20} className="text-foreground" />
             </Link>
             <Link to="/profile" className="p-2 rounded-lg hover:bg-muted transition-colors">
@@ -89,7 +111,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </header>
 
         {/* Page content */}
-        <main className="flex-1 p-6 overflow-y-auto">
+        <main className="flex-1 p-4 md:p-6 overflow-y-auto">
           {children}
         </main>
       </div>

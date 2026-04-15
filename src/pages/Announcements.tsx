@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import DashboardLayout from "@/components/DashboardLayout";
-import { Megaphone } from "lucide-react";
+import { Megaphone, Bookmark } from "lucide-react";
 
 const tabs = ["All", "Important", "Module Specific"];
 const announcements = [
@@ -16,7 +17,7 @@ export default function Announcements() {
       <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
         <Megaphone size={22} className="text-secondary" /> Announcements
       </h2>
-      <div className="flex gap-2 mb-6">
+      <div className="flex gap-2 mb-6 flex-wrap">
         {tabs.map((t, i) => (
           <button key={t} className={`text-sm px-4 py-1.5 rounded-full border transition-colors ${
             i === 0 ? "bg-secondary text-secondary-foreground border-secondary" : "border-border text-muted-foreground hover:bg-muted"
@@ -25,18 +26,25 @@ export default function Announcements() {
       </div>
       <div className="space-y-4">
         {announcements.map((a, i) => (
-          <article key={i} className="bg-card rounded-lg shadow-sm border p-4">
-            <div className="flex items-center justify-between mb-1">
-              <h4 className="font-semibold text-sm">{a.title}</h4>
-              {a.tag && (
-                <span className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded-full ${
-                  a.tag === "important" ? "bg-destructive/10 text-destructive" : "bg-success/15 text-success"
-                }`}>{a.tag}</span>
-              )}
-            </div>
-            <p className="text-xs text-muted-foreground mb-1">{a.date}</p>
-            <p className="text-sm text-foreground/80">{a.desc}</p>
-          </article>
+          <Link key={i} to={`/announcement/${i}`} className="block">
+            <article className="bg-card rounded-lg shadow-sm border p-4 hover:shadow-md transition-shadow">
+              <div className="flex items-center justify-between mb-1">
+                <h4 className="font-semibold text-sm">{a.title}</h4>
+                <div className="flex items-center gap-2">
+                  {a.tag && (
+                    <span className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded-full ${
+                      a.tag === "important" ? "bg-destructive/10 text-destructive" : "bg-success/15 text-success"
+                    }`}>{a.tag}</span>
+                  )}
+                  <button onClick={(e) => e.preventDefault()} className="text-muted-foreground hover:text-secondary transition-colors">
+                    <Bookmark size={14} />
+                  </button>
+                </div>
+              </div>
+              <p className="text-xs text-muted-foreground mb-1">{a.date}</p>
+              <p className="text-sm text-foreground/80">{a.desc}</p>
+            </article>
+          </Link>
         ))}
       </div>
     </DashboardLayout>
