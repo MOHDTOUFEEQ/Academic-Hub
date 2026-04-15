@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import DashboardLayout from "@/components/DashboardLayout";
 import { Briefcase, Bookmark } from "lucide-react";
 
@@ -17,17 +18,17 @@ export default function Opportunities() {
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {opportunities.map((o, i) => (
-          <div key={i} className="bg-card rounded-lg shadow-sm border p-5 flex flex-col">
+          <Link key={i} to={`/opportunity/${i}`} className="bg-card rounded-lg shadow-sm border p-5 flex flex-col hover:shadow-md transition-shadow">
             <div className="flex items-start justify-between mb-2">
               <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-secondary/15 text-secondary">{o.type}</span>
-              <button className="text-muted-foreground hover:text-secondary transition-colors">
+              <button onClick={(e) => e.preventDefault()} className="text-muted-foreground hover:text-secondary transition-colors">
                 <Bookmark size={16} />
               </button>
             </div>
             <h4 className="font-semibold text-sm mb-1">{o.title}</h4>
             <p className="text-xs text-muted-foreground flex-1">{o.desc}</p>
-            <button className="mt-3 text-xs text-secondary hover:underline text-left">Learn more →</button>
-          </div>
+            <span className="mt-3 text-xs text-secondary">Learn more →</span>
+          </Link>
         ))}
       </div>
     </DashboardLayout>

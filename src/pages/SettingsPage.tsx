@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import DashboardLayout from "@/components/DashboardLayout";
-import { Settings } from "lucide-react";
+import { Settings, Accessibility } from "lucide-react";
 
 export default function SettingsPage() {
   return (
@@ -55,6 +56,9 @@ export default function SettingsPage() {
               </label>
             ))}
           </div>
+          <Link to="/accessibility-settings" className="mt-4 block text-sm text-secondary hover:underline flex items-center gap-1">
+            <Accessibility size={14} /> Advanced accessibility settings →
+          </Link>
         </section>
 
         {/* Notifications */}

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import DashboardLayout from "@/components/DashboardLayout";
 import { Calendar } from "lucide-react";
 
@@ -15,16 +16,16 @@ const slots: Record<string, Record<string, string>> = {
 export default function Timetable() {
   return (
     <DashboardLayout>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
         <h2 className="text-2xl font-bold flex items-center gap-2">
           <Calendar size={22} className="text-secondary" /> Weekly Timetable
         </h2>
-        <button className="text-sm text-secondary border border-secondary rounded-lg px-4 py-2 hover:bg-secondary/10 transition-colors">
+        <Link to="/calendar-sync" className="text-sm text-secondary border border-secondary rounded-lg px-4 py-2 hover:bg-secondary/10 transition-colors text-center">
           Sync with Google Calendar
-        </button>
+        </Link>
       </div>
       <div className="bg-card rounded-lg shadow-sm border overflow-x-auto">
-        <table className="w-full text-sm">
+        <table className="w-full text-sm min-w-[600px]">
           <thead>
             <tr className="border-b">
               <th className="p-3 text-left text-xs text-muted-foreground font-medium w-20">Time</th>
