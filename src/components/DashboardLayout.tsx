@@ -44,10 +44,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <aside className={`fixed md:sticky top-0 left-0 z-50 md:z-auto w-60 shrink-0 h-screen bg-sidebar text-sidebar-foreground flex flex-col transition-transform duration-200 ${
         sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
       }`}>
-        <div className="px-5 py-5 border-b border-sidebar-border flex items-center justify-between">
-          <h1 className="text-lg font-bold tracking-tight text-sidebar-primary-foreground">
-            Smart Academic<br />Dashboard
-          </h1>
+        <div className="px-5 py-5 border-b border-sidebar-border flex items-center justify-between gap-2">
+          <Link to="/" className="flex items-center gap-3 min-w-0 text-left" onClick={() => setSidebarOpen(false)}>
+            <img src="/logo.svg" alt="" width={40} height={40} className="shrink-0 rounded-[10px]" />
+            <h1 className="text-lg font-bold tracking-tight text-sidebar-primary-foreground leading-tight">
+              Academic Hub
+            </h1>
+          </Link>
           <button className="md:hidden text-sidebar-foreground p-1" onClick={() => setSidebarOpen(false)}>
             <X size={20} />
           </button>
@@ -73,7 +76,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           })}
         </nav>
         <div className="px-5 py-4 border-t border-sidebar-border text-xs text-sidebar-foreground/50">
-          © 2026 Smart Academic Dashboard
+          © 2026 Academic Hub
         </div>
       </aside>
 

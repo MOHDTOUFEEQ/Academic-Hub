@@ -10,17 +10,17 @@ export default function Profile() {
       <div className="max-w-lg bg-card rounded-lg shadow-sm border p-6">
         <div className="flex items-center gap-4 mb-6">
           <div className="w-16 h-16 rounded-full bg-secondary/20 flex items-center justify-center text-secondary text-2xl font-bold">
-            S
+            A
           </div>
           <div>
-            <h3 className="font-semibold text-lg">Student Name</h3>
+            <h3 className="font-semibold text-lg">Amritveer</h3>
             <p className="text-sm text-muted-foreground">BSc Computer Science</p>
           </div>
         </div>
         <div className="space-y-4">
           {[
-            { label: "Full Name", value: "Student Name" },
-            { label: "Student ID", value: "2026CS001" },
+            { label: "Full Name", value: "Amritveer" },
+            { label: "Student ID", value: "32116327" },
             { label: "Course", value: "BSc Computer Science" },
             { label: "Academic Year", value: "2025/2026" },
             { label: "Email", value: "student@university.ac.uk" },

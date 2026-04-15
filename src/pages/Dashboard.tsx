@@ -16,12 +16,19 @@ import {
 } from "lucide-react";
 
 export default function Dashboard() {
+  const todayOverviewLabel = new Intl.DateTimeFormat("en-GB", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(new Date());
+
   return (
     <DashboardLayout>
       {/* Welcome */}
       <section className="mb-8">
-        <h2 className="text-2xl font-bold mb-1">Hello, Student 👋</h2>
-        <p className="text-muted-foreground text-sm">Today's overview — Wednesday, 15 April 2026</p>
+        <h2 className="text-2xl font-bold mb-1">Hello, Amritveer 👋</h2>
+        <p className="text-muted-foreground text-sm">Today&apos;s overview — {todayOverviewLabel}</p>
         <div className="mt-4 bg-secondary/10 border border-secondary/30 rounded-lg p-4 flex items-start gap-3">
           <Sparkles size={20} className="text-secondary mt-0.5 shrink-0" />
           <p className="text-sm text-foreground">

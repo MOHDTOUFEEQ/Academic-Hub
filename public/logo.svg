@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" role="img" aria-label="Academic Hub">
+  <rect width="40" height="40" rx="10" fill="url(#ah-grad)"/>
+  <path
+    d="M20 9c-2.5 0-4.8 1-6.5 2.6V28c1.7-1.2 3.8-1.9 6-1.9 2.2 0 4.3.7 6 1.9V11.6C24.8 10 22.5 9 20 9Z"
+    fill="#fff"
+    fill-opacity="0.22"
+  />
+  <path
+    d="M13.5 11.6C15.2 10 17.5 9 20 9c2.5 0 4.8 1 6.5 2.6M13.5 11.6V28M26.5 11.6V28"
+    stroke="#fff"
+    stroke-width="1.75"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M20 12.5v13.6"
+    stroke="#B8E5FF"
+    stroke-width="1.5"
+    stroke-linecap="round"
+  />
+  <defs>
+    <linearGradient id="ah-grad" x1="8" y1="6" x2="34" y2="36" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3EB0E8"/>
+      <stop offset="1" stop-color="#1E7BB8"/>
+    </linearGradient>
+  </defs>
+</svg>

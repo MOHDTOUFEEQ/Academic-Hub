@@ -21,7 +21,7 @@ export default function Help() {
       <h2 className="text-2xl font-bold mb-2 flex items-center gap-2">
         <HelpCircle size={22} className="text-secondary" /> Help Centre
       </h2>
-      <p className="text-sm text-muted-foreground mb-6">Find answers to frequently asked questions about using the Smart Academic Dashboard.</p>
+      <p className="text-sm text-muted-foreground mb-6">Find answers to frequently asked questions about using Academic Hub.</p>
 
       <div className="max-w-3xl space-y-3">
         {faqs.map((faq, i) => (
