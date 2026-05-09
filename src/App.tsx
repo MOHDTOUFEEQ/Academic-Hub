@@ -21,6 +21,10 @@ import Profile from "./pages/Profile";
 import Notifications from "./pages/Notifications";
 import Help from "./pages/Help";
 import NotFound from "./pages/NotFound";
+import SmartAttendance from "./pages/SmartAttendance";
+import StudySpaces from "./pages/StudySpaces";
+import SmartEnvironment from "./pages/SmartEnvironment";
+import CampusNavigation from "./pages/CampusNavigation";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +51,10 @@ const App = () => (
           <Route path="/accessibility-settings" element={<AccessibilitySettings />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/notifications" element={<Notifications />} />
+          <Route path="/smart-attendance" element={<SmartAttendance />} />
+          <Route path="/study-spaces" element={<StudySpaces />} />
+          <Route path="/smart-environment" element={<SmartEnvironment />} />
+          <Route path="/campus-navigation" element={<CampusNavigation />} />
           <Route path="/help" element={<Help />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

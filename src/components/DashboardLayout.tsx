@@ -13,6 +13,10 @@ import {
   Search,
   User,
   HelpCircle,
+  ScanLine,
+  Building2,
+  Leaf,
+  Navigation,
   Menu,
   X,
 } from "lucide-react";
@@ -25,6 +29,10 @@ const navItems = [
   { label: "Announcements", icon: Megaphone, path: "/announcements" },
   { label: "Opportunities", icon: Briefcase, path: "/opportunities" },
   { label: "AI Suggestions", icon: Sparkles, path: "/ai-suggestions" },
+  { label: "Smart Attendance", icon: ScanLine, path: "/smart-attendance" },
+  { label: "Study Spaces", icon: Building2, path: "/study-spaces" },
+  { label: "Smart Environment", icon: Leaf, path: "/smart-environment" },
+  { label: "Campus Navigation", icon: Navigation, path: "/campus-navigation" },
   { label: "Settings", icon: Settings, path: "/settings" },
   { label: "Help", icon: HelpCircle, path: "/help" },
 ];

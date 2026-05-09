@@ -13,6 +13,13 @@ import {
   Pin,
   Lightbulb,
   Bell,
+  ScanLine,
+  Building2,
+  Leaf,
+  Navigation,
+  CircleDot,
+  Wifi,
+  ShieldCheck,
 } from "lucide-react";
 
 export default function Dashboard() {
@@ -60,6 +67,50 @@ export default function Dashboard() {
             <p className="text-xs text-muted-foreground">Review notes weekly for better retention</p>
           </div>
         </div>
+      </section>
+
+      {/* Smart campus widgets */}
+      <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
+        <Link to="/smart-attendance" className="bg-card rounded-xl border p-4 shadow-sm hover:shadow-md transition-shadow">
+          <div className="flex items-center justify-between">
+            <h3 className="text-sm font-semibold flex items-center gap-2">
+              <ScanLine size={16} className="text-secondary" /> Attendance Sync
+            </h3>
+            <CircleDot size={12} className="text-success animate-pulse" />
+          </div>
+          <p className="text-2xl font-bold mt-3">87%</p>
+          <p className="text-xs text-muted-foreground mt-1">Checked in: Room B204 • 09:01 AM</p>
+          <p className="text-xs text-secondary mt-2">Upcoming lecture reminder: Web Dev Lab at 11:00</p>
+        </Link>
+
+        <Link to="/study-spaces" className="bg-card rounded-xl border p-4 shadow-sm hover:shadow-md transition-shadow">
+          <h3 className="text-sm font-semibold flex items-center gap-2">
+            <Building2 size={16} className="text-secondary" /> Recommended Study Space
+          </h3>
+          <p className="text-sm font-medium mt-3">Library Floor 3 - Quiet Deck</p>
+          <p className="text-xs text-muted-foreground mt-1">18 seats available now</p>
+          <p className="text-xs mt-2 text-warning">Peak crowdedness expected at 2:00 PM</p>
+        </Link>
+
+        <Link to="/smart-environment" className="bg-card rounded-xl border p-4 shadow-sm hover:shadow-md transition-shadow">
+          <h3 className="text-sm font-semibold flex items-center gap-2">
+            <Leaf size={16} className="text-secondary" /> Study Environment Status
+          </h3>
+          <p className="text-sm font-medium mt-3">Comfort Score: 74 / 100</p>
+          <div className="h-2 bg-muted rounded-full mt-2 overflow-hidden">
+            <div className="h-full bg-secondary w-3/4" />
+          </div>
+          <p className="text-xs text-muted-foreground mt-2">Noise moderate • Air quality stable</p>
+        </Link>
+
+        <Link to="/campus-navigation" className="bg-card rounded-xl border p-4 shadow-sm hover:shadow-md transition-shadow">
+          <h3 className="text-sm font-semibold flex items-center gap-2">
+            <Navigation size={16} className="text-secondary" /> Smart Navigation
+          </h3>
+          <p className="text-sm font-medium mt-3">Find My Classroom: Room B204</p>
+          <p className="text-xs text-muted-foreground mt-1">Estimated walking time: 7 minutes</p>
+          <p className="text-xs mt-2 text-secondary">Fastest accessible route selected</p>
+        </Link>
       </section>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -238,6 +289,18 @@ export default function Dashboard() {
             <Link to="/ai-suggestions" className="block mt-3 text-xs text-secondary hover:underline">View all suggestions →</Link>
           </section>
 
+          {/* Smart Notifications Center */}
+          <section className="bg-card rounded-lg shadow-sm border p-4">
+            <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
+              <Bell size={16} className="text-secondary" /> Smart Notifications Center
+            </h3>
+            <ul className="space-y-2 text-sm">
+              <li className="p-2 rounded-md bg-success/5 border border-success/20">Smart Sensor Connected</li>
+              <li className="p-2 rounded-md bg-secondary/5 border border-secondary/20">Attendance synced successfully</li>
+              <li className="p-2 rounded-md bg-warning/5 border border-warning/20">Quiet study room available nearby</li>
+            </ul>
+          </section>
+
           {/* Quick Module Access */}
           <section className="bg-card rounded-lg shadow-sm border p-4">
             <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
@@ -279,6 +342,21 @@ export default function Dashboard() {
               <li><Link to="/module/human-computer-interaction" className="hover:text-secondary">Viewed: HCI Lecture Notes</Link></li>
               <li><Link to="/assignment/web-development/0" className="hover:text-secondary">Viewed: Web Dev Assignment Brief</Link></li>
               <li><Link to="/announcement/0" className="hover:text-secondary">Read: Lecture Moved Online</Link></li>
+              <li><Link to="/smart-attendance" className="hover:text-secondary">Attendance auto check-in completed (Room B204)</Link></li>
+              <li><Link to="/study-spaces" className="hover:text-secondary">AI suggested a quieter study space nearby</Link></li>
+            </ul>
+          </section>
+
+          {/* Live Sync and Devices */}
+          <section className="bg-secondary/10 rounded-lg border border-secondary/25 p-4">
+            <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
+              <Wifi size={16} className="text-secondary" /> Real-Time Sync Indicators
+            </h3>
+            <ul className="space-y-2 text-xs">
+              <li className="flex items-center justify-between"><span>Attendance Gateway</span><span className="text-success inline-flex items-center gap-1"><CircleDot size={10} className="animate-pulse" /> Live</span></li>
+              <li className="flex items-center justify-between"><span>Environment Sensors</span><span className="text-success inline-flex items-center gap-1"><CircleDot size={10} className="animate-pulse" /> Connected</span></li>
+              <li className="flex items-center justify-between"><span>Navigation Beacons</span><span className="text-secondary">Synced</span></li>
+              <li className="flex items-center justify-between"><span>Secure Device Auth</span><span className="text-success inline-flex items-center gap-1"><ShieldCheck size={11} /> Active</span></li>
             </ul>
           </section>
         </div>
